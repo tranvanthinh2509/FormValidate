@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="main">
+        <form action="" method="post" class="form" id="form-1">
+
+            <div class="header">
+                <h3 class="title">Thành viên đăng ký</h3>
+                <p class="msg">Cùng nhau học lập trình miễn phí tại F8 <i class="fa-solid fa-heart"></i></p>
+            </div>
+            <div class="form-nhap">
+                <p for="fullname" class="item">Tên đầy đủ</p>
+                <input type="text" name="fullname" id="fullname" placeholder="VD: Trần Văn Thịnh">
+                <span class="form-msg"></span>
+            </div>
+            <div class="form-nhap">
+                <p for="email" class="item">Email</p>
+                <input type="text" name="email" id="email" placeholder="VD: name@gmail.com">
+                <span class="form-msg"></span>
+            </div>
+            <div class="form-nhap">
+                <p for="password" class="item">Mật khẩu</p>
+                <input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
+                <span class="form-msg"></span>
+            </div>
+            <div class="form-nhap">
+                <p for="password-again" class="item">Nhập lại mật khẩu</p>
+                <input type="password" name="password" id="password-again" placeholder="Nhập lại mật khẩu">
+                <span class="form-msg"></span>
+            </div>
+            <button class="footer">Đăng ký</button>
+        </form>
+    </div>
+
+
+    <script src="./validator.js"></script>
+
+
+    <script>
+        Validator({
+            form: '#form-1',
+            errorSelector: '.form-msg',
+            rules: [
+                Validator.isRequired('#fullname','Nhập tên đầy đủ của bạn'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+                Validator.isConfirmed('#password-again', function () {
+                    return document.querySelector('#form-1 #password').value;
+                }, 'Mật khẩu không hợp lệ')
+            ],
+            // onSubmit: function (data) {
+            //     // Call API
+            //     console.log(data);
+            // }
+        })
+    </script>
+</body>
+</html>
