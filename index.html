@@ -35,6 +35,24 @@
                 <input type="password" name="password" id="password-again" placeholder="Nhập lại mật khẩu">
                 <span class="form-msg"></span>
             </div>
+            <div class="form-nhap horizontal">
+                <p for="password-again" class="item">Giới tính</p>
+                <div class="radio-button">
+                    <div>
+                        <input type="radio" name="gender" value="male">
+                        <p>Nam</p>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" value="male">
+                        <p>Nữ</p>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" value="male">
+                        <p>Khác</p>
+                    </div>
+                </div>
+                <span class="form-msg"></span>
+            </div>
             <button class="footer">Đăng ký</button>
         </form>
     </div>
@@ -46,20 +64,22 @@
     <script>
         Validator({
             form: '#form-1',
+            formGroupSelector: '.form-nhap',
             errorSelector: '.form-msg',
             rules: [
                 Validator.isRequired('#fullname','Nhập tên đầy đủ của bạn'),
-                Validator.isRequired('#email'),
+                // Validator.isRequired('#email'),
                 Validator.isEmail('#email'),
+                Validator.isRequired('input[name="gender"]'),
                 Validator.minLength('#password', 6),
                 Validator.isConfirmed('#password-again', function () {
                     return document.querySelector('#form-1 #password').value;
                 }, 'Mật khẩu không hợp lệ')
             ],
-            // onSubmit: function (data) {
-            //     // Call API
-            //     console.log(data);
-            // }
+            onSubmit: function (data) {
+                // Call API
+                console.log(data);
+            }
         })
     </script>
 </body>

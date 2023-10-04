@@ -8,7 +8,7 @@ html {
 }
 body {
     height: 100vh;
-    background-color: #ccc;
+    background-color: #efecec;
     display: flex;
     justify-content: center;
 }
@@ -19,7 +19,7 @@ body {
     width:389px;
     min-height: 509px;
     padding: 40px 20px;
-    
+    box-shadow: 0 0 4px 4px #ccc;
     margin: auto;
     background-color: #fff;
 }
@@ -61,7 +61,7 @@ input {
     height: 40px;
     width: 100%;
     color: #fff;
-    background-color: grey;
+    background-color: #61d450;
     font-size: 18px;
     border-radius: 10px;
     border: none;
@@ -76,4 +76,18 @@ input {
 }
 .invalid .form-msg {
     color: red;
+}
+.radio-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 5px
+}
+.radio-button div{
+    width: 20px;
+    font-size: 14px;
+}
+.radio-button div input {
+    margin: 0;
 }
